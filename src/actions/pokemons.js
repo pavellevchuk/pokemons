@@ -1,6 +1,6 @@
 const currentAPI = 'https://pokeapi.co/api/v2';
 
-export const getChunk = (url = '/pokemon/?limit=12') => {
+export const getChunk = (url = currentAPI  + '/pokemon/?limit=12') => {
     function onSuccess(data){
         return {
             type: 'SET_CHUNK',
@@ -8,11 +8,9 @@ export const getChunk = (url = '/pokemon/?limit=12') => {
         }
     }
 
-    let currentUrl = url.replace(currentAPI, '');
-
     return{
         type: 'API',
-        url: currentUrl,
+        url,
         onSuccess
     }
 }
@@ -21,7 +19,7 @@ export const getPokemon = (url) => {
 
     return {
         type: 'API',
-        url: url.replace(currentAPI, '')
+        url
     }
 }
 
